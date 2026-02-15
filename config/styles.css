@@ -1234,6 +1234,12 @@ body {
     color: #10b981;
 }
 
+
+.key-article-card {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Latest Notes Section */
 .latest-notes-section {
     padding: 4rem 0;

@@ -38,3 +38,13 @@ Because this is static HTML/CSS/JS with `.nojekyll`, it renders directly.
    - `id`, `title`, `category`, `categoryPath`, `path`, `date`, `description`, `tags`
 3. The homepage, category pages, and all-notes page will use that data.
 
+
+
+## Front-end architecture
+
+- `js/homepage.js` → single homepage controller (loads data once, handles filtering, renders sections)
+- `js/category-page.js` → category page controller (core readings + latest articles + stats)
+- `js/navigation-manager.js` → shared navigation behavior and transitions
+- `js/article-pagination.js` → previous/next navigation on article pages
+
+This keeps page responsibilities separated and avoids duplicated data-fetch/render code across multiple files.

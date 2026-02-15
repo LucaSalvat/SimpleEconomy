@@ -126,21 +126,12 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/article-manager.js"></script>
-    <script src="js/home-updater.js"></script>
-    <script src="js/page-selector.js"></script>
+    <script src="js/homepage.js"></script>
     <script src="js/navigation-manager.js"></script>
     <script>
-      document.getElementById('mobileMenuBtn')?.addEventListener('click', function () {
-        document.getElementById('mainNav')?.classList.toggle('active');
+      initHomepage().catch((error) => {
+        console.error('Failed to initialize homepage:', error);
       });
-
-      Promise.resolve()
-        .then(() => initHomeUpdater())
-        .then(() => initPageSelector())
-        .catch((error) => {
-          console.error('Failed to initialize homepage:', error);
-        });
     </script>
 </body>
 </html>
