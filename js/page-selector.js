@@ -39,6 +39,10 @@
 
     if (!featured || !recent) return;
 
+    if (typeof window.renderPopularTopics === 'function') {
+      window.renderPopularTopics(articles);
+    }
+
     if (articles.length === 0) {
       featured.innerHTML = '<p class="empty-message">No featured note found for this filter.</p>';
       recent.innerHTML = '';

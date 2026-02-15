@@ -37,10 +37,17 @@
       .sort((a, b) => b[1] - a[1])
       .slice(0, 4);
 
+    if (top.length === 0) {
+      container.innerHTML = '<p class="empty-message">No popular topics available for this filter.</p>';
+      return;
+    }
+
+    const colorClasses = ['topic-blue', 'topic-purple', 'topic-green', 'topic-orange'];
+
     container.innerHTML = top
       .map(
-        ([tag, count]) =>
-          `<div class="topic-card"><h3>${tag}</h3><p>${count} note${count === 1 ? '' : 's'}</p></div>`,
+        ([tag, count], index) =>
+          `<div class="topic-card ${colorClasses[index % colorClasses.length]}"><h3 class="topic-title">${tag}</h3><p class="topic-count">${count} note${count === 1 ? '' : 's'}</p></div>`,
       )
       .join('');
   }
@@ -80,4 +87,5 @@
   }
 
   window.initHomeUpdater = initHomeUpdater;
+  window.renderPopularTopics = renderPopularTopics;
 })();
