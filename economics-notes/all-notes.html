@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all economics notes - comprehensive collection covering microeconomics, macroeconomics, and more.">
+    <title>All Notes - Economics Notes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📈</div>
+                    <div class="logo-text">
+                        <h1 class="site-title">Economics Notes</h1>
+                        <p class="site-subtitle">Your personal economics knowledge base</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="all-notes.html" class="nav-link active">All Notes</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2 class="page-title">All Notes</h2>
+            <p class="page-description">Browse all economics articles and resources</p>
+            
+            <!-- Search Bar -->
+            <div class="search-wrapper" style="margin-top: 2rem;">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search notes by title, category, or keywords...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-wrapper" id="categoriesContainer">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Stats Bar -->
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalArticles">0</span>
+                    <span class="stat-label">Total Articles</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCategories">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="showingCount">0</span>
+                    <span class="stat-label">Showing</span>
+                </div>
+            </div>
+
+            <!-- All Notes Grid -->
+            <section class="section">
+                <div class="notes-grid" id="allNotesGrid">
+                    <!-- All notes will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No articles found. Try a different search term or category.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">📈</div>
+                        <h3 class="footer-title">Economics Notes</h3>
+                    </div>
+                    <p class="footer-description">
+                        Building a comprehensive collection of economics knowledge, one note at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="all-notes.html">All Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Connect</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html#contact">Contact</a></li>
+                        <li><a href="about.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Economics Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/app.js"></script>
+    <script src="js/articles.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/all-notes.js"></script>
+</body>
+</html>
