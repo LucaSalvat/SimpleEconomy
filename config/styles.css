@@ -1551,3 +1551,117 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* --- Visual polish updates --- */
+.logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.content-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    padding: 1.5rem;
+}
+
+.content-title {
+    font-size: 1.6rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+.content-body p {
+    color: #4b5563;
+    margin-bottom: 0.85rem;
+}
+
+.empty-message {
+    color: #6b7280;
+    text-align: center;
+    width: 100%;
+    background: #fff;
+    border: 1px dashed #d1d5db;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.macro-header {
+    background: linear-gradient(135deg, #6d28d9, #4338ca);
+}
+
+.macro-page-main {
+    padding-top: 2rem;
+}
+
+.macro-intro-section {
+    margin-bottom: 2.5rem;
+}
+
+.macro-intro-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.macro-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.macro-stat-row .hero-stat {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #312e81;
+}
+
+.macro-stat-row .hero-stat-number {
+    color: #4338ca;
+}
+
+.macro-stat-row .hero-stat-label {
+    color: #4b5563;
+}
+
+.macro-intro-visual {
+    min-height: 100%;
+}
+
+.macro-visual-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08);
+    height: 100%;
+}
+
+.macro-visual-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #312e81;
+    margin-bottom: 0.75rem;
+}
+
+.macro-visual-svg {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .macro-intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .macro-stat-row {
+        grid-template-columns: 1fr;
+    }
+}
