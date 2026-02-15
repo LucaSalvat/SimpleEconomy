@@ -45,11 +45,16 @@ class ArticlePagination {
         });
     }
 
-    // Get navigation depth from root
+    // Get navigation depth from project root (supports GitHub Pages project sites)
     getDepthFromRoot() {
-        const path = window.location.pathname;
-        const parts = path.split('/').filter(p => p && p !== 'index.html');
-        return parts.length;
+        const parts = window.location.pathname.split('/').filter(Boolean);
+        const topLevelDirs = new Set(['articles', 'homes', 'js', 'config', 'data']);
+        const hasProjectPrefix = parts.length > 0 && !topLevelDirs.has(parts[0]);
+        const baseIndex = hasProjectPrefix ? 1 : 0;
+        const relativeParts = parts.slice(baseIndex);
+
+        // For /index.html depth is 0. For /homes/x.html depth is 1. For /articles/x/y.html depth is 2.
+        return Math.max(0, relativeParts.length - 1);
     }
 
     // Find previous article (older)
