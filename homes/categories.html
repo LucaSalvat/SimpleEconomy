@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse economics notes by category - Microeconomics, Macroeconomics, Econometrics, Finance, and more.">
+    <title>Categories - Economics Notes</title>
+    <link rel="stylesheet" href="../config/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📈</div>
+                    <div class="logo-text">
+                        <h1 class="site-title">Economics Notes</h1>
+                        <p class="site-subtitle">Your personal economics knowledge base</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="all-notes.html" class="nav-link">All Notes</a>
+                    <a href="categories.html" class="nav-link active">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2 class="page-title">Browse by Category</h2>
+            <p class="page-description">Explore economics topics organized by field</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Categories Grid -->
+            <div class="categories-overview">
+                
+                <!-- Microeconomics -->
+                <a href="microeconomics.html" class="category-card category-micro">
+                    <div class="category-card-icon">🔬</div>
+                    <h3 class="category-card-title">Microeconomics</h3>
+                    <p class="category-card-description">
+                        Study of individual markets, consumer behavior, supply and demand, market structures, and price theory.
+                    </p>
+                    <div class="category-card-stats">
+                        <span class="stat-item" id="microCount">0 articles</span>
+                    </div>
+                    <div class="category-card-arrow">→</div>
+                </a>
+
+                <!-- Macroeconomics -->
+                <a href="macroeconomics.html" class="category-card category-macro">
+                    <div class="category-card-icon">🌍</div>
+                    <h3 class="category-card-title">Macroeconomics</h3>
+                    <p class="category-card-description">
+                        Analysis of entire economies, GDP, inflation, unemployment, fiscal and monetary policy, and economic growth.
+                    </p>
+                    <div class="category-card-stats">
+                        <span class="stat-item" id="macroCount">0 articles</span>
+                    </div>
+                    <div class="category-card-arrow">→</div>
+                </a>
+
+                <!-- Econometrics -->
+                <a href="econometrics.html" class="category-card category-econometrics">
+                    <div class="category-card-icon">📈</div>
+                    <h3 class="category-card-title">Econometrics</h3>
+                    <p class="category-card-description">
+                        Statistical methods for economic analysis, regression models, time series analysis, and forecasting techniques.
+                    </p>
+                    <div class="category-card-stats">
+                        <span class="stat-item" id="econometricsCount">0 articles</span>
+                    </div>
+                    <div class="category-card-arrow">→</div>
+                </a>
+
+                <!-- Finance -->
+                <a href="finance.html" class="category-card category-finance">
+                    <div class="category-card-icon">💼</div>
+                    <h3 class="category-card-title">Finance</h3>
+                    <p class="category-card-description">
+                        Asset pricing, portfolio theory, financial markets, risk management, and investment strategies.
+                    </p>
+                    <div class="category-card-stats">
+                        <span class="stat-item" id="financeCount">0 articles</span>
+                    </div>
+                    <div class="category-card-arrow">→</div>
+                </a>
+
+                <!-- Development Economics -->
+                <a href="development.html" class="category-card category-development">
+                    <div class="category-card-icon">🌱</div>
+                    <h3 class="category-card-title">Development Economics</h3>
+                    <p class="category-card-description">
+                        Economic growth, poverty reduction, inequality, sustainable development, and development policies.
+                    </p>
+                    <div class="category-card-stats">
+                        <span class="stat-item" id="developmentCount">0 articles</span>
+                    </div>
+                    <div class="category-card-arrow">→</div>
+                </a>
+
+            </div>
+
+            <!-- Topics Overview -->
+            <section class="topics-overview">
+                <h2 class="section-title">Popular Topics Across Categories</h2>
+                <div class="topics-grid" id="popularTopics">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">📈</div>
+                        <h3 class="footer-title">Economics Notes</h3>
+                    </div>
+                    <p class="footer-description">
+                        Building a comprehensive collection of economics knowledge, one note at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="all-notes.html">All Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-list">
+                        <li><a href="microeconomics.html">Microeconomics</a></li>
+                        <li><a href="macroeconomics.html">Macroeconomics</a></li>
+                        <li><a href="econometrics.html">Econometrics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Economics Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/navigation-manager.js"></script>
+    <script>
+        // Load article counts and popular topics
+        async function loadCategoryData() {
+            try {
+                const response = await fetch('../data/articles.json');
+                const data = await response.json();
+                const articles = data.articles || [];
+
+                // Count articles per category
+                const counts = {
+                    microeconomics: 0,
+                    macroeconomics: 0,
+                    econometrics: 0,
+                    finance: 0,
+                    development: 0
+                };
+
+                articles.forEach(article => {
+                    const cat = article.categoryPath;
+                    if (counts.hasOwnProperty(cat)) {
+                        counts[cat]++;
+                    }
+                });
+
+                // Update counts
+                document.getElementById('microCount').textContent = `${counts.microeconomics} article${counts.microeconomics !== 1 ? 's' : ''}`;
+                document.getElementById('macroCount').textContent = `${counts.macroeconomics} article${counts.macroeconomics !== 1 ? 's' : ''}`;
+                document.getElementById('econometricsCount').textContent = `${counts.econometrics} article${counts.econometrics !== 1 ? 's' : ''}`;
+                document.getElementById('financeCount').textContent = `${counts.finance} article${counts.finance !== 1 ? 's' : ''}`;
+                document.getElementById('developmentCount').textContent = `${counts.development} article${counts.development !== 1 ? 's' : ''}`;
+
+                // Display popular topics (tags)
+                displayPopularTopics(articles);
+
+            } catch (error) {
+                console.error('Error loading category data:', error);
+            }
+        }
+
+        // Display popular topics
+        function displayPopularTopics(articles) {
+            const tagCounts = {};
+            
+            articles.forEach(article => {
+                if (article.tags) {
+                    article.tags.forEach(tag => {
+                        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+                    });
+                }
+            });
+
+            // Sort by count and get top 6
+            const topTags = Object.entries(tagCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 6);
+
+            const container = document.getElementById('popularTopics');
+            
+            if (topTags.length === 0) {
+                container.innerHTML = '<p>No topics available yet.</p>';
+                return;
+            }
+
+            container.innerHTML = topTags.map(([tag, count]) => `
+                <div class="topic-tag">
+                    <span class="topic-name">${tag}</span>
+                    <span class="topic-count">${count}</span>
+                </div>
+            `).join('');
+        }
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('mainNav')?.classList.toggle('active');
+        });
+
+        // Load data on page load
+        loadCategoryData();
+    </script>
+</body>
+</html>

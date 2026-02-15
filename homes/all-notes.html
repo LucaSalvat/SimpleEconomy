@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all economics notes - Complete collection of articles on microeconomics, macroeconomics, econometrics, and more.">
+    <title>All Notes - Economics Notes</title>
+    <link rel="stylesheet" href="../config/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📈</div>
+                    <div class="logo-text">
+                        <h1 class="site-title">Economics Notes</h1>
+                        <p class="site-subtitle">Your personal economics knowledge base</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="all-notes.html" class="nav-link active">All Notes</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2 class="page-title">All Notes</h2>
+            <p class="page-description">Browse the complete collection of economics articles</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label for="categoryFilter" class="filter-label">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="microeconomics">Microeconomics</option>
+                        <option value="macroeconomics">Macroeconomics</option>
+                        <option value="econometrics">Econometrics</option>
+                        <option value="finance">Finance</option>
+                        <option value="development">Development Economics</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortFilter" class="filter-label">Sort by:</label>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                    </select>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="notesSearch" class="search-input-small" placeholder="Search articles...">
+                    <span class="search-icon-small">🔍</span>
+                </div>
+            </div>
+
+            <div class="results-count">
+                <span id="resultsCount">Loading articles...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div id="allNotesGrid" class="notes-grid">
+                <!-- Articles will be loaded here by JavaScript -->
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-icon">📚</div>
+                <h3>No articles found</h3>
+                <p>Try adjusting your filters or search terms</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">📈</div>
+                        <h3 class="footer-title">Economics Notes</h3>
+                    </div>
+                    <p class="footer-description">
+                        Building a comprehensive collection of economics knowledge, one note at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="all-notes.html">All Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-list">
+                        <li><a href="microeconomics.html">Microeconomics</a></li>
+                        <li><a href="macroeconomics.html">Macroeconomics</a></li>
+                        <li><a href="econometrics.html">Econometrics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Economics Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/navigation-manager.js"></script>
+    <script>
+        // All Notes Page Logic
+        let allArticles = [];
+        let filteredArticles = [];
+
+        // Load articles from JSON
+        async function loadArticles() {
+            try {
+                const response = await fetch('../data/articles.json');
+                const data = await response.json();
+                allArticles = data.articles || [];
+                filteredArticles = [...allArticles];
+                renderArticles();
+                updateResultsCount();
+            } catch (error) {
+                console.error('Error loading articles:', error);
+                document.getElementById('allNotesGrid').innerHTML = '<p>Error loading articles. Please try again later.</p>';
+            }
+        }
+
+        // Render articles
+        function renderArticles() {
+            const container = document.getElementById('allNotesGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (filteredArticles.length === 0) {
+                container.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            container.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            container.innerHTML = filteredArticles.map(article => {
+                const categoryColors = {
+                    'Microeconomics': '#3b82f6',
+                    'Macroeconomics': '#8b5cf6',
+                    'Econometrics': '#10b981',
+                    'Finance': '#6366f1',
+                    'Development Economics': '#14b8a6'
+                };
+
+                const color = categoryColors[article.category] || '#6b7280';
+
+                return `
+                    <div class="note-card">
+                        <div class="note-card-header" style="border-left: 4px solid ${color};">
+                            <h3 class="note-card-title">
+                                <a href="../${article.path}">${article.title}</a>
+                            </h3>
+                            <span class="note-card-category" style="background-color: ${color}20; color: ${color};">
+                                ${article.category}
+                            </span>
+                        </div>
+                        <p class="note-card-description">${article.description || 'Read more...'}</p>
+                        <div class="note-card-footer">
+                            <span class="note-card-date">📅 ${formatDate(article.date)}</span>
+                            ${article.readTime ? `<span class="note-card-time">⏱️ ${article.readTime}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter articles
+        function filterArticles() {
+            const category = document.getElementById('categoryFilter').value;
+            const searchTerm = document.getElementById('notesSearch').value.toLowerCase();
+
+            filteredArticles = allArticles.filter(article => {
+                const matchesCategory = category === 'all' || article.categoryPath === category;
+                const matchesSearch = !searchTerm || 
+                    article.title.toLowerCase().includes(searchTerm) ||
+                    (article.description && article.description.toLowerCase().includes(searchTerm)) ||
+                    (article.tags && article.tags.some(tag => tag.toLowerCase().includes(searchTerm)));
+
+                return matchesCategory && matchesSearch;
+            });
+
+            sortArticles();
+            renderArticles();
+            updateResultsCount();
+        }
+
+        // Sort articles
+        function sortArticles() {
+            const sortBy = document.getElementById('sortFilter').value;
+
+            switch (sortBy) {
+                case 'date-desc':
+                    filteredArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'date-asc':
+                    filteredArticles.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                case 'title-asc':
+                    filteredArticles.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+                case 'title-desc':
+                    filteredArticles.sort((a, b) => b.title.localeCompare(a.title));
+                    break;
+            }
+        }
+
+        // Update results count
+        function updateResultsCount() {
+            const count = filteredArticles.length;
+            const total = allArticles.length;
+            document.getElementById('resultsCount').textContent = 
+                `Showing ${count} of ${total} article${total !== 1 ? 's' : ''}`;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Event listeners
+        document.getElementById('categoryFilter').addEventListener('change', filterArticles);
+        document.getElementById('sortFilter').addEventListener('change', () => {
+            sortArticles();
+            renderArticles();
+        });
+        document.getElementById('notesSearch').addEventListener('input', filterArticles);
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('mainNav')?.classList.toggle('active');
+        });
+
+        // Load articles on page load
+        loadArticles();
+    </script>
+</body>
+</html>
