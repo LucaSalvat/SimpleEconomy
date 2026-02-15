@@ -1,0 +1,160 @@
+================================================================================
+                       🚀 FIX IN 3 COMMANDS
+================================================================================
+
+              YOUR GITHUB PAGES ISN'T WORKING BECAUSE
+           index.html IS INSIDE "economics-notes" FOLDER
+
+                  HERE'S THE INSTANT FIX:
+
+================================================================================
+                        💻 THE 3 COMMANDS
+================================================================================
+
+Open Terminal (Mac/Linux) or Command Prompt (Windows)
+
+Navigate to your repository:
+  cd path/to/your-repository
+
+Then run these 3 commands:
+
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│  1. mv economics-notes/* .                                │
+│                                                            │
+│  2. mv economics-notes/.nojekyll .                        │
+│                                                            │
+│  3. rm -rf economics-notes                                │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+
+DONE! Files are now at root level!
+
+================================================================================
+                     🪟 FOR WINDOWS USERS
+================================================================================
+
+Open Command Prompt:
+  cd C:\path\to\your-repository
+
+Run these 3 commands:
+
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│  1. move economics-notes\* .                              │
+│                                                            │
+│  2. move economics-notes\.nojekyll .                      │
+│                                                            │
+│  3. rmdir economics-notes                                 │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+
+DONE! Files are now at root level!
+
+================================================================================
+                     📤 THEN PUSH TO GITHUB
+================================================================================
+
+After moving files:
+
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│  git add .                                                │
+│                                                            │
+│  git commit -m "Move files to root for GitHub Pages"     │
+│                                                            │
+│  git push origin main                                     │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+
+Wait 2-3 minutes, then visit:
+  https://yourusername.github.io/repo-name/
+
+IT WILL WORK! ✅
+
+================================================================================
+                   🖱️ DON'T LIKE COMMAND LINE?
+================================================================================
+
+MANUAL METHOD (NO COMMANDS):
+
+1. Open your repository folder on your computer
+
+2. Go into the "economics-notes" folder
+
+3. Press Ctrl+A (select all files)
+
+4. Press Ctrl+X (cut)
+
+5. Go UP one level (to repository root)
+
+6. Press Ctrl+V (paste)
+
+7. Delete the now-empty "economics-notes" folder
+
+8. Commit and push with Git Desktop or:
+   - git add .
+   - git commit -m "Move to root"
+   - git push
+
+DONE! ✅
+
+================================================================================
+                     ✅ HOW TO VERIFY IT WORKED
+================================================================================
+
+ON YOUR COMPUTER:
+─────────────────
+
+Open your repository folder.
+You should see index.html IMMEDIATELY (not inside a folder).
+
+✅ CORRECT:
+   your-repo/
+   ├── index.html       ← See it right away!
+   ├── about.html
+   └── css/
+
+❌ WRONG:
+   your-repo/
+   └── economics-notes/
+       └── index.html   ← Still too deep!
+
+ON GITHUB.COM:
+──────────────
+
+Go to: https://github.com/yourusername/repo-name
+
+✅ CORRECT:
+   You see index.html in the file list immediately
+
+❌ WRONG:
+   You only see "economics-notes" folder
+
+ON YOUR WEBSITE:
+────────────────
+
+Visit: https://yourusername.github.io/repo-name/
+
+✅ WORKS:
+   Economics Notes homepage loads!
+
+❌ DOESN'T WORK:
+   404 error or blank page
+
+================================================================================
+                       🎯 THE BOTTOM LINE
+================================================================================
+
+              THE PROBLEM: Files in subfolder
+              THE SOLUTION: Move to root
+              THE COMMANDS: See above
+              THE RESULT: Site works!
+
+                    IT'S THAT SIMPLE!
+
+================================================================================
+
+              RUN THE 3 COMMANDS AND YOU'RE DONE!
+
+================================================================================
