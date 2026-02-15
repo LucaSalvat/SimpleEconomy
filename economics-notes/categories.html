@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse economics notes by category - Microeconomics, Macroeconomics, International Economics, and more.">
+    <meta name="description" content="Browse economics notes by category">
     <title>Categories - Economics Notes</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -33,33 +33,17 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h2 class="page-title">Browse by Category</h2>
-            <p class="page-description">Explore economics notes organized by topic</p>
+            <h2 class="page-title">Categories</h2>
+            <p class="page-description">Explore notes organized by economic topics</p>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Categories Grid -->
     <main class="main-content">
         <div class="container">
-            
-            <!-- Categories Grid -->
             <section class="section">
-                <div class="category-cards-grid" id="categoryCardsGrid">
-                    <!-- Category cards will be loaded dynamically -->
-                </div>
+                <div class="category-cards-grid" id="categoriesGrid"></div>
             </section>
-
-            <!-- Selected Category Articles -->
-            <section class="section" id="categoryArticlesSection" style="display: none;">
-                <div class="category-header">
-                    <h2 class="section-title" id="categoryTitle">Category Articles</h2>
-                    <button class="back-button" id="backButton">← Back to all categories</button>
-                </div>
-                <div class="notes-grid" id="categoryArticlesGrid">
-                    <!-- Articles for selected category will be loaded here -->
-                </div>
-            </section>
-
         </div>
     </main>
 
@@ -98,9 +82,102 @@
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
-    <script src="js/app.js"></script>
-    <script src="js/articles.js"></script>
-    <script src="js/categories-page.js"></script>
+    <script>
+    const AppState = { articles: [], categories: [] };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        }
+    });
+
+    async function loadData() {
+        try {
+            const response = await fetch('data/articles.json');
+            const data = await response.json();
+            
+            AppState.articles = data.articles;
+            AppState.categories = data.categories;
+            
+            renderCategoryCards();
+        } catch (error) {
+            console.error('Error loading data:', error);
+        }
+    }
+
+    function renderCategoryCards() {
+        const container = document.getElementById('categoriesGrid');
+        if (!container) return;
+        
+        const icons = {
+            'all': '📚',
+            'microeconomics': '📊',
+            'macroeconomics': '🌍',
+            'econometrics': '📉',
+            'development': '📈',
+            'finance': '💰'
+        };
+        
+        const gradients = {
+            'all': 'category-blue',
+            'microeconomics': 'category-purple',
+            'macroeconomics': 'category-green',
+            'econometrics': 'category-indigo',
+            'development': 'category-orange',
+            'finance': 'category-teal'
+        };
+        
+        container.innerHTML = AppState.categories
+            .filter(cat => cat.slug !== 'all')
+            .map(category => {
+                const categoryArticles = AppState.articles.filter(a => 
+                    a.category.toLowerCase() === category.name.toLowerCase()
+                );
+                
+                const recentArticles = categoryArticles
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 3);
+                
+                return `
+                    <div class="category-card ${gradients[category.slug] || 'category-blue'}">
+                        <div class="category-header">
+                            <div class="category-icon">${icons[category.slug] || '📚'}</div>
+                            <div>
+                                <h3 class="category-name">${category.name}</h3>
+                                <p class="category-count">${category.count} article${category.count !== 1 ? 's' : ''}</p>
+                            </div>
+                        </div>
+                        ${recentArticles.length > 0 ? `
+                            <div class="category-articles">
+                                <h4>Recent articles:</h4>
+                                <ul>
+                                    ${recentArticles.map(article => `
+                                        <li onclick="navigateToArticle('${article.id}')" style="cursor: pointer;">
+                                            ${article.title}
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        <a href="all-notes.html" class="category-view-all">View all →</a>
+                    </div>
+                `;
+            }).join('');
+    }
+
+    function navigateToArticle(articleId) {
+        const article = AppState.articles.find(a => a.id === articleId);
+        if (article && article.content) {
+            window.location.href = article.content;
+        }
+    }
+    </script>
 </body>
 </html>

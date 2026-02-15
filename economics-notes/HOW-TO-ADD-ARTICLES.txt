@@ -1,0 +1,299 @@
+================================================================================
+                    📝 HOW TO ADD NEW ARTICLES
+================================================================================
+
+Quick guide for adding new economics notes to your website.
+
+================================================================================
+                          STEP 1: CREATE ARTICLE HTML
+================================================================================
+
+1. Go to the 'articles' folder
+
+2. Copy 'article-template.html'
+
+3. Rename it:
+   Example: international-trade-theory.html
+   
+   Rules:
+   - Use lowercase
+   - Use hyphens (not spaces)
+   - No special characters
+   ✅ supply-and-demand.html
+   ❌ Supply & Demand!.html
+
+4. Open the file and edit:
+   
+   Replace this:
+   - [Article Title] → "International Trade Theory"
+   - [Category] → "Macroeconomics"
+   - [Date] → "Feb 15, 2026"
+   - [Read Time] → "7 min read"
+   - [Article excerpt...] → Your summary
+   - [Your article content...] → Your full content
+
+================================================================================
+                     STEP 2: ADD TO ARTICLES DATABASE
+================================================================================
+
+1. Open 'data/articles.json'
+
+2. Find the "articles" array (at the top)
+
+3. Add your article entry:
+
+{
+  "id": "international-trade-theory",
+  "title": "International Trade Theory",
+  "description": "Exploring comparative advantage and trade benefits",
+  "category": "Macroeconomics",
+  "date": "2026-02-15",
+  "featured": false,
+  "tags": ["trade", "comparative advantage", "globalization"],
+  "author": "Economics Notes",
+  "readTime": "7 min read",
+  "content": "articles/international-trade-theory.html",
+  "gradient": "from-green-500 to-teal-600"
+}
+
+IMPORTANT:
+- Add a comma AFTER the previous article
+- Make sure "id" matches your HTML filename
+- Use quotes around all strings
+- Date format: YYYY-MM-DD
+
+================================================================================
+                       STEP 3: UPDATE CATEGORY COUNT
+================================================================================
+
+Still in 'articles.json', scroll down to "categories" section.
+
+Find your article's category and increase the count:
+
+{
+  "name": "Macroeconomics",
+  "slug": "macroeconomics",
+  "count": 5     ← Increase this by 1
+}
+
+================================================================================
+                           STEP 4: REFRESH WEBSITE
+================================================================================
+
+That's it! Your article will now appear on:
+✅ Homepage (in Recent Notes)
+✅ All Notes page
+✅ Categories page
+
+If you set "featured": true, it will appear as the featured article!
+
+================================================================================
+                         📋 ARTICLE TEMPLATE STRUCTURE
+================================================================================
+
+articles/your-article.html
+
+Contains:
+- Header (navigation)
+- Article title and metadata
+- Article content (your writing here!)
+- Back link to homepage
+- Mobile menu functionality
+
+Just focus on the CONTENT section - navigation is automatic!
+
+================================================================================
+                        🎨 GRADIENT COLOR OPTIONS
+================================================================================
+
+Choose one for your article's "gradient" field:
+
+- "from-blue-500 to-purple-600"     → Blue/Purple
+- "from-green-500 to-teal-600"      → Green/Teal
+- "from-orange-500 to-amber-600"    → Orange/Amber
+- "from-pink-500 to-rose-600"       → Pink/Rose
+- "from-indigo-500 to-blue-600"     → Indigo/Blue
+- "from-violet-500 to-purple-600"   → Violet/Purple
+- "from-emerald-500 to-green-600"   → Emerald/Green
+- "from-cyan-500 to-teal-600"       → Cyan/Teal
+
+These affect the colorful card backgrounds on the homepage!
+
+================================================================================
+                         ✅ CHECKLIST BEFORE SAVING
+================================================================================
+
+Before you save articles.json:
+
+☐ Article HTML file created in 'articles' folder
+☐ Article ID is lowercase with hyphens
+☐ Article ID matches HTML filename
+☐ Added article to "articles" array
+☐ Added comma after previous article
+☐ Updated category count
+☐ All quotes and brackets correct
+☐ Validated JSON (paste into jsonlint.com)
+
+================================================================================
+                           🔍 FEATURED ARTICLES
+================================================================================
+
+Want your article featured on the homepage?
+
+Set: "featured": true
+
+NOTE: Only ONE article should be featured at a time!
+(The newest featured article will be shown)
+
+================================================================================
+                            📝 CATEGORY LIST
+================================================================================
+
+Current categories:
+
+- All Notes (shows everything)
+- Microeconomics
+- Macroeconomics
+- Econometrics
+- Development
+- Finance
+
+To add a NEW category:
+
+1. Add article with new category name
+2. Add category to "categories" array in articles.json:
+
+{
+  "name": "Behavioral Economics",
+  "slug": "behavioral-economics",
+  "count": 1
+}
+
+================================================================================
+                         💡 EXAMPLE: COMPLETE WORKFLOW
+================================================================================
+
+Let's add an article about "Game Theory":
+
+STEP 1: Create HTML
+------------------
+- Copy article-template.html
+- Save as: game-theory-basics.html
+- Edit content
+
+STEP 2: Edit articles.json
+-------------------------
+Add to "articles" array:
+
+{
+  "id": "game-theory-basics",
+  "title": "Introduction to Game Theory",
+  "description": "Understanding strategic decision-making",
+  "category": "Microeconomics",
+  "date": "2026-02-15",
+  "featured": false,
+  "tags": ["game theory", "strategy", "Nash equilibrium"],
+  "author": "Economics Notes",
+  "readTime": "10 min read",
+  "content": "articles/game-theory-basics.html",
+  "gradient": "from-indigo-500 to-blue-600"
+},    ← Don't forget comma!
+
+STEP 3: Update Category
+-----------------------
+Find Microeconomics in "categories":
+
+{
+  "name": "Microeconomics",
+  "slug": "microeconomics",
+  "count": 5     ← Was 4, now 5
+}
+
+STEP 4: Test
+-----------
+- Refresh website
+- Check homepage
+- Check All Notes page
+- Click your article
+- Test search for "game theory"
+
+Done! 🎉
+
+================================================================================
+                          🚨 COMMON MISTAKES
+================================================================================
+
+❌ Forgetting comma after previous article
+   → JSON will be invalid!
+
+❌ Mismatched article ID and filename
+   → Article won't open!
+
+❌ Wrong date format (e.g., "Feb 15, 2026")
+   → Use: "2026-02-15"
+
+❌ Category doesn't match existing categories
+   → Article won't filter correctly
+
+❌ Not updating category count
+   → Count will be wrong on Categories page
+
+❌ Missing quotes around strings
+   → JSON will be invalid!
+
+================================================================================
+                          🧪 TESTING YOUR CHANGES
+================================================================================
+
+After adding article:
+
+1. Validate JSON:
+   - Go to jsonlint.com
+   - Paste your articles.json content
+   - Click "Validate JSON"
+   - Fix any errors shown
+
+2. Test locally:
+   python -m http.server 8000
+   
+   Then check:
+   ✅ Homepage shows new article
+   ✅ Can click and read article
+   ✅ Article appears in All Notes
+   ✅ Article appears in correct category
+   ✅ Search finds your article
+
+3. Deploy:
+   - Commit changes to Git
+   - Push to GitHub
+   - Wait 2 minutes
+   - Check your GitHub Pages site
+
+================================================================================
+                           📞 NEED HELP?
+================================================================================
+
+Article not showing up?
+
+1. Check browser console (F12) for errors
+2. Validate your JSON at jsonlint.com
+3. Make sure article ID matches filename
+4. Clear browser cache (Ctrl+Shift+R)
+5. Check the article HTML file exists
+
+JSON syntax error?
+
+- Missing comma?
+- Extra comma at end of array?
+- Missing quote?
+- Missing bracket?
+
+Use jsonlint.com - it shows EXACTLY where the error is!
+
+================================================================================
+
+That's it! You're ready to add articles! 🚀
+
+Keep your economics notes organized and publish with ease!
+
+================================================================================

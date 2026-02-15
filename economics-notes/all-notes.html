@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse all economics notes - comprehensive collection covering microeconomics, macroeconomics, and more.">
+    <meta name="description" content="Browse all economics notes">
     <title>All Notes - Economics Notes</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -41,51 +41,32 @@
                 <input type="text" class="search-input" id="searchInput" placeholder="Search notes by title, category, or keywords...">
                 <span class="search-icon">🔍</span>
             </div>
-            <div id="searchResults" class="search-results"></div>
         </div>
     </section>
 
     <!-- Categories Filter -->
     <section class="categories-section">
         <div class="container">
-            <div class="categories-wrapper" id="categoriesContainer">
-                <!-- Categories will be loaded dynamically -->
-            </div>
+            <div class="categories-wrapper" id="categoriesContainer"></div>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Statistics -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Articles List -->
     <main class="main-content">
         <div class="container">
-            
-            <!-- Stats Bar -->
-            <div class="stats-bar" id="statsBar">
-                <div class="stat-item">
-                    <span class="stat-number" id="totalArticles">0</span>
-                    <span class="stat-label">Total Articles</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="totalCategories">0</span>
-                    <span class="stat-label">Categories</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="showingCount">0</span>
-                    <span class="stat-label">Showing</span>
-                </div>
-            </div>
-
-            <!-- All Notes Grid -->
             <section class="section">
-                <div class="notes-grid" id="allNotesGrid">
-                    <!-- All notes will be loaded dynamically -->
+                <div class="notes-grid" id="allNotesContainer"></div>
+                <div id="noResults" class="no-results" style="display: none;">
+                    <p>No articles found. Try a different search term or category.</p>
                 </div>
             </section>
-
-            <!-- No Results Message -->
-            <div id="noResults" class="no-results" style="display: none;">
-                <p>No articles found. Try a different search term or category.</p>
-            </div>
-
         </div>
     </main>
 
@@ -124,10 +105,205 @@
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
-    <script src="js/app.js"></script>
-    <script src="js/articles.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/all-notes.js"></script>
+    <script>
+    const AppState = {
+        articles: [],
+        categories: [],
+        currentCategory: 'all',
+        searchTerm: ''
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        setupEventListeners();
+        setupSearch();
+    });
+
+    async function loadData() {
+        try {
+            const response = await fetch('data/articles.json');
+            const data = await response.json();
+            
+            AppState.articles = data.articles;
+            AppState.categories = data.categories;
+            
+            renderCategories();
+            renderStats();
+            renderAllNotes();
+        } catch (error) {
+            console.error('Error loading data:', error);
+        }
+    }
+
+    function setupEventListeners() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        }
+    }
+
+    function setupSearch() {
+        const searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+        
+        let searchTimeout;
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                AppState.searchTerm = e.target.value.trim();
+                renderAllNotes();
+            }, 300);
+        });
+    }
+
+    function renderCategories() {
+        const container = document.getElementById('categoriesContainer');
+        if (!container) return;
+        
+        container.innerHTML = AppState.categories.map((category, index) => `
+            <button class="category-pill ${index === 0 ? 'active' : ''}" 
+                    onclick="filterByCategory('${category.slug}', this)">
+                ${category.name} (${category.count})
+            </button>
+        `).join('');
+    }
+
+    function renderStats() {
+        const container = document.getElementById('statsGrid');
+        if (!container) return;
+        
+        const totalNotes = AppState.articles.length;
+        const categories = AppState.categories.filter(c => c.slug !== 'all').length;
+        const recentNotes = AppState.articles.filter(a => {
+            const date = new Date(a.date);
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            return date >= thirtyDaysAgo;
+        }).length;
+        
+        container.innerHTML = `
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <div class="stat-content">
+                    <div class="stat-number">${totalNotes}</div>
+                    <div class="stat-label">Total Notes</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏷️</div>
+                <div class="stat-content">
+                    <div class="stat-number">${categories}</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✨</div>
+                <div class="stat-content">
+                    <div class="stat-number">${recentNotes}</div>
+                    <div class="stat-label">Recent Updates</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderAllNotes() {
+        const container = document.getElementById('allNotesContainer');
+        const noResults = document.getElementById('noResults');
+        if (!container) return;
+        
+        const filtered = getFilteredArticles();
+        
+        if (filtered.length === 0) {
+            container.style.display = 'none';
+            if (noResults) noResults.style.display = 'block';
+            return;
+        }
+        
+        container.style.display = 'grid';
+        if (noResults) noResults.style.display = 'none';
+        
+        container.innerHTML = filtered.map(article => `
+            <article class="note-card" onclick="navigateToArticle('${article.id}')">
+                <div class="note-image ${getGradientClass(article.gradient)}">
+                    <div class="note-icon">📈</div>
+                </div>
+                <div class="card-content">
+                    <div class="meta-info">
+                        <span class="badge">${article.category}</span>
+                        <span class="date-small">${formatDate(article.date)}</span>
+                    </div>
+                    <h3 class="card-title">${article.title}</h3>
+                    <p class="card-description">${article.description}</p>
+                    <div class="card-footer">
+                        <span class="read-time">${article.readTime}</span>
+                        <a href="#" class="read-more" onclick="event.preventDefault(); navigateToArticle('${article.id}')">
+                            Read more →
+                        </a>
+                    </div>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    function filterByCategory(categorySlug, element) {
+        AppState.currentCategory = categorySlug;
+        AppState.searchTerm = '';
+        
+        document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+        element.classList.add('active');
+        
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = '';
+        
+        renderAllNotes();
+    }
+
+    function getFilteredArticles() {
+        let articles = [...AppState.articles];
+        
+        if (AppState.currentCategory !== 'all') {
+            articles = articles.filter(a => a.category.toLowerCase() === AppState.currentCategory.toLowerCase());
+        }
+        
+        if (AppState.searchTerm) {
+            const search = AppState.searchTerm.toLowerCase();
+            articles = articles.filter(a => 
+                a.title.toLowerCase().includes(search) ||
+                a.description.toLowerCase().includes(search) ||
+                a.category.toLowerCase().includes(search) ||
+                a.tags.some(tag => tag.toLowerCase().includes(search))
+            );
+        }
+        
+        return articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    function getGradientClass(gradient) {
+        if (gradient.includes('blue')) return 'note-bg-blue';
+        if (gradient.includes('purple') || gradient.includes('violet')) return 'note-bg-purple';
+        if (gradient.includes('green') || gradient.includes('emerald')) return 'note-bg-green';
+        if (gradient.includes('orange') || gradient.includes('amber')) return 'note-bg-orange';
+        if (gradient.includes('pink') || gradient.includes('rose')) return 'note-bg-pink';
+        if (gradient.includes('cyan') || gradient.includes('teal')) return 'note-bg-cyan';
+        return 'note-bg-blue';
+    }
+
+    function navigateToArticle(articleId) {
+        const article = AppState.articles.find(a => a.id === articleId);
+        if (article && article.content) {
+            window.location.href = article.content;
+        }
+    }
+    </script>
 </body>
 </html>
