@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Macroeconomics - National economies, growth, and policy">
+    <title>Macroeconomics | Economics Notes</title>
+    <link rel="stylesheet" href="../config/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📈</div>
+                    <div class="logo-text">
+                        <h1 class="site-title">Economics Notes</h1>
+                        <p class="site-subtitle">Your personal economics knowledge base</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="all-notes.html" class="nav-link">All Notes</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Hero -->
+    <section class="category-hero" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(124, 58, 237, 0.9)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><rect fill=%22%238b5cf6%22 width=%221200%22 height=%22600%22/><path d=%22M0,300 Q300,200 600,300 T1200,300%22 fill=%22none%22 stroke=%22%23a78bfa%22 stroke-width=%223%22 opacity=%220.3%22/><path d=%22M0,250 Q300,350 600,250 T1200,250%22 fill=%22none%22 stroke=%22%23c4b5fd%22 stroke-width=%223%22 opacity=%220.3%22/></svg>'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="category-hero-content">
+                <div class="category-breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="breadcrumb-separator">→</span>
+                    <a href="categories.html">Categories</a>
+                    <span class="breadcrumb-separator">→</span>
+                    <span>Macroeconomics</span>
+                </div>
+                <div class="category-hero-grid">
+                    <div class="category-hero-text">
+                        <h1 class="category-hero-title">
+                            <span class="category-hero-icon">🌍</span>
+                            Macroeconomics
+                        </h1>
+                        <p class="category-hero-description">
+                            Macroeconomics studies the economy as a whole, analyzing aggregate phenomena such as GDP, unemployment, inflation, and economic growth. It examines how governments and central banks use fiscal and monetary policy to influence economic outcomes and stabilize business cycles.
+                        </p>
+                        <div class="category-hero-meta">
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" id="articleCount">0</span>
+                                <span class="hero-stat-label">Articles</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number">7</span>
+                                <span class="hero-stat-label">Core Topics</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" id="readTime">0</span>
+                                <span class="hero-stat-label">Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-hero-visual">
+                        <div class="category-illustration">
+                            <div class="illustration-card">
+                                <div class="macro-chart">
+                                    <div class="chart-title">GDP Growth Cycle</div>
+                                    <svg viewBox="0 0 200 150" class="chart-svg">
+                                        <!-- Business cycle wave -->
+                                        <path d="M20,75 Q40,45 60,75 T100,75 T140,75 T180,75" fill="none" stroke="#a78bfa" stroke-width="3"/>
+                                        <!-- Trend line -->
+                                        <line x1="20" y1="80" x2="180" y2="60" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <!-- Axes -->
+                                        <line x1="20" y1="130" x2="180" y2="130" stroke="#6b7280" stroke-width="1"/>
+                                        <line x1="20" y1="20" x2="20" y2="130" stroke="#6b7280" stroke-width="1"/>
+                                        <!-- Labels -->
+                                        <text x="5" y="15" font-size="10" fill="white">GDP</text>
+                                        <text x="170" y="145" font-size="10" fill="white">Time</text>
+                                        <text x="130" y="55" font-size="9" fill="#fbbf24">Trend</text>
+                                        <text x="50" y="50" font-size="9" fill="#a78bfa">Expansion</text>
+                                        <text x="110" y="95" font-size="9" fill="#a78bfa">Recession</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foundation Section -->
+    <section class="foundation-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">🏗️</span>
+                    Foundation & Key Concepts
+                </h2>
+                <p class="section-description">Essential frameworks for understanding macroeconomic analysis</p>
+            </div>
+
+            <!-- Core Structure -->
+            <div class="foundation-structure">
+                <div class="structure-card structure-primary">
+                    <h3 class="structure-title">National Accounts & Measurement</h3>
+                    <ul class="structure-list">
+                        <li>
+                            <span class="structure-icon">💹</span>
+                            <div class="structure-content">
+                                <strong>GDP and National Income</strong>
+                                <p>Measuring economic output, expenditure vs income approach</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="structure-icon">📊</span>
+                            <div class="structure-content">
+                                <strong>Inflation & Price Indices</strong>
+                                <p>CPI, PPI, GDP deflator, real vs nominal values</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="structure-icon">👥</span>
+                            <div class="structure-content">
+                                <strong>Unemployment</strong>
+                                <p>Labor market dynamics, natural rate, types of unemployment</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="structure-card structure-secondary">
+                    <h3 class="structure-title">Models & Policy</h3>
+                    <ul class="structure-list">
+                        <li>
+                            <span class="structure-icon">⚙️</span>
+                            <div class="structure-content">
+                                <strong>Aggregate Demand & Supply</strong>
+                                <p>AD-AS model, short-run and long-run equilibrium</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="structure-icon">🏦</span>
+                            <div class="structure-content">
+                                <strong>Monetary Policy</strong>
+                                <p>Central banks, interest rates, money supply control</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="structure-icon">🏛️</span>
+                            <div class="structure-content">
+                                <strong>Fiscal Policy</strong>
+                                <p>Government spending, taxation, deficits and debt</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Key Articles Needed -->
+            <div class="key-articles-section">
+                <h3 class="subsection-title">Essential Articles to Master Macroeconomics</h3>
+                <div class="key-articles-grid" id="keyArticlesGrid">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Notes -->
+    <section class="latest-notes-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">📝</span>
+                    Latest Macroeconomics Notes
+                </h2>
+                <p class="section-description">Recently added insights and analyses</p>
+            </div>
+            <div class="notes-grid" id="latestNotes">
+                <!-- Dynamically populated -->
+            </div>
+            <div id="noNotes" class="no-articles" style="display: none;">
+                <p>No articles yet in this category. Check back soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Categories -->
+    <section class="related-categories-section">
+        <div class="container">
+            <h3 class="subsection-title">Explore Related Fields</h3>
+            <div class="related-categories-grid">
+                <a href="microeconomics.html" class="related-category-card">
+                    <span class="related-icon">🔬</span>
+                    <h4>Microeconomics</h4>
+                    <p>Individual agents and markets</p>
+                </a>
+                <a href="finance.html" class="related-category-card">
+                    <span class="related-icon">💼</span>
+                    <h4>Finance</h4>
+                    <p>Financial markets and instruments</p>
+                </a>
+                <a href="development.html" class="related-category-card">
+                    <span class="related-icon">🌱</span>
+                    <h4>Development Economics</h4>
+                    <p>Economic growth and development</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">📈</div>
+                        <h3 class="footer-title">Economics Notes</h3>
+                    </div>
+                    <p class="footer-description">
+                        Building a comprehensive collection of economics knowledge, one note at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="all-notes.html">All Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-list">
+                        <li><a href="microeconomics.html">Microeconomics</a></li>
+                        <li><a href="macroeconomics.html">Macroeconomics</a></li>
+                        <li><a href="econometrics.html">Econometrics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Economics Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/category-page.js"></script>
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        if (typeof initCategoryPage === 'function') {
+            initCategoryPage('macroeconomics');
+        }
+    </script>
+</body>
+</html>

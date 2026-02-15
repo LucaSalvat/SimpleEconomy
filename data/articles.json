@@ -1,0 +1,155 @@
+{
+  "articles": [
+    {
+      "id": "supply-demand-basics",
+      "title": "Supply and Demand Dynamics",
+      "category": "Microeconomics",
+      "categoryPath": "microeconomics",
+      "path": "articles/microeconomics/supply-demand-basics.html",
+      "date": "2026-02-10",
+      "description": "Understanding market equilibrium through the interaction of supply and demand curves, including elasticity concepts and real-world applications.",
+      "tags": ["supply", "demand", "equilibrium", "elasticity"],
+      "featured": true,
+      "readTime": "8 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "consumer-utility",
+      "title": "Consumer Theory & Utility Maximization",
+      "category": "Microeconomics",
+      "categoryPath": "microeconomics",
+      "path": "articles/microeconomics/consumer-utility.html",
+      "date": "2026-02-08",
+      "description": "Exploring how consumers make choices under budget constraints to maximize utility using indifference curves and optimization techniques.",
+      "tags": ["utility", "consumer theory", "optimization"],
+      "featured": false,
+      "readTime": "10 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "gdp-measurement",
+      "title": "GDP & National Income Accounting",
+      "category": "Macroeconomics",
+      "categoryPath": "macroeconomics",
+      "path": "articles/macroeconomics/gdp-measurement.html",
+      "date": "2026-02-12",
+      "description": "Comprehensive guide to measuring economic output through GDP, including expenditure and income approaches, and understanding real vs nominal values.",
+      "tags": ["GDP", "national accounts", "measurement"],
+      "featured": false,
+      "readTime": "12 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "monetary-policy",
+      "title": "Monetary Policy Tools & Transmission",
+      "category": "Macroeconomics",
+      "categoryPath": "macroeconomics",
+      "path": "articles/macroeconomics/monetary-policy.html",
+      "date": "2026-02-05",
+      "description": "How central banks use interest rates, reserve requirements, and open market operations to influence the economy and control inflation.",
+      "tags": ["monetary policy", "central banking", "interest rates"],
+      "featured": true,
+      "readTime": "15 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "regression-basics",
+      "title": "Simple Linear Regression Fundamentals",
+      "category": "Econometrics",
+      "categoryPath": "econometrics",
+      "path": "articles/econometrics/regression-basics.html",
+      "date": "2026-02-14",
+      "description": "Introduction to OLS regression, including estimation, interpretation, and the classical assumptions underlying linear models.",
+      "tags": ["regression", "OLS", "statistics"],
+      "featured": false,
+      "readTime": "10 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "time-value-money",
+      "title": "Time Value of Money Principles",
+      "category": "Finance",
+      "categoryPath": "finance",
+      "path": "articles/finance/time-value-money.html",
+      "date": "2026-02-11",
+      "description": "Understanding present value, future value, and discounting cash flows for investment and financial decision-making.",
+      "tags": ["finance", "discounting", "present value"],
+      "featured": false,
+      "readTime": "7 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "poverty-measurement",
+      "title": "Measuring Poverty: Methods & Challenges",
+      "category": "Development Economics",
+      "categoryPath": "development",
+      "path": "articles/development/poverty-measurement.html",
+      "date": "2026-02-09",
+      "description": "Analyzing different approaches to measuring poverty, from absolute poverty lines to multidimensional poverty indices.",
+      "tags": ["poverty", "development", "measurement"],
+      "featured": false,
+      "readTime": "9 min read",
+      "author": "Economics Notes"
+    },
+    {
+      "id": "market-structures",
+      "title": "Understanding Market Structures",
+      "category": "Microeconomics",
+      "categoryPath": "microeconomics",
+      "path": "articles/microeconomics/market-structures.html",
+      "date": "2026-02-06",
+      "description": "Comparing perfect competition, monopoly, oligopoly, and monopolistic competition, with real-world examples and policy implications.",
+      "tags": ["market structures", "competition", "monopoly"],
+      "featured": false,
+      "readTime": "11 min read",
+      "author": "Economics Notes"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Microeconomics",
+      "slug": "microeconomics",
+      "path": "microeconomics",
+      "icon": "🔬",
+      "count": 4,
+      "description": "Study of individual agents, firms, and markets",
+      "color": "blue"
+    },
+    {
+      "name": "Macroeconomics",
+      "slug": "macroeconomics",
+      "path": "macroeconomics",
+      "icon": "🌍",
+      "count": 2,
+      "description": "Analysis of aggregate economic phenomena",
+      "color": "purple"
+    },
+    {
+      "name": "Econometrics",
+      "slug": "econometrics",
+      "path": "econometrics",
+      "icon": "📈",
+      "count": 1,
+      "description": "Statistical methods in economic analysis",
+      "color": "green"
+    },
+    {
+      "name": "Finance",
+      "slug": "finance",
+      "path": "finance",
+      "icon": "💼",
+      "count": 1,
+      "description": "Financial markets, instruments, and valuation",
+      "color": "indigo"
+    },
+    {
+      "name": "Development Economics",
+      "slug": "development",
+      "path": "development",
+      "icon": "🌱",
+      "count": 1,
+      "description": "Economic growth and development challenges",
+      "color": "teal"
+    }
+  ]
+}

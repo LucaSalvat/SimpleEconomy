@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Economics Notes</title>
+    <link rel="stylesheet" href="/config/styles.css">
+    <style>
+        .error-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .error-icon {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        
+        .error-description {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .error-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .error-btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+        
+        .error-btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .error-btn-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        
+        .error-btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .suggestions {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: left;
+        }
+        
+        .suggestions h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        
+        .suggestions-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .suggestions-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .suggestions-list a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .suggestions-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .suggestion-icon {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📈</div>
+                    <div class="logo-text">
+                        <h1 class="site-title">Economics Notes</h1>
+                        <p class="site-subtitle">Your personal economics knowledge base</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="/index.html" class="nav-link">Home</a>
+                    <a href="/homes/all-notes.html" class="nav-link">All Notes</a>
+                    <a href="/homes/categories.html" class="nav-link">Categories</a>
+                    <a href="/homes/about.html" class="nav-link">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Error Page Content -->
+    <main class="error-page">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-icon">📚</div>
+                <div class="error-code">404</div>
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-description">
+                    Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or the URL might be incorrect.
+                </p>
+                
+                <div class="error-actions">
+                    <a href="/index.html" class="error-btn error-btn-primary">
+                        🏠 Back to Home
+                    </a>
+                    <a href="/homes/all-notes.html" class="error-btn error-btn-secondary">
+                        📖 Browse All Notes
+                    </a>
+                    <a href="javascript:history.back()" class="error-btn error-btn-secondary">
+                        ← Go Back
+                    </a>
+                </div>
+
+                <div class="suggestions">
+                    <h3>Popular Pages</h3>
+                    <ul class="suggestions-list">
+                        <li>
+                            <span class="suggestion-icon">🔬</span>
+                            <a href="/homes/microeconomics.html">Microeconomics Notes</a>
+                        </li>
+                        <li>
+                            <span class="suggestion-icon">🌍</span>
+                            <a href="/homes/macroeconomics.html">Macroeconomics Notes</a>
+                        </li>
+                        <li>
+                            <span class="suggestion-icon">📈</span>
+                            <a href="/homes/econometrics.html">Econometrics Notes</a>
+                        </li>
+                        <li>
+                            <span class="suggestion-icon">💼</span>
+                            <a href="/homes/finance.html">Finance Notes</a>
+                        </li>
+                        <li>
+                            <span class="suggestion-icon">🏷️</span>
+                            <a href="/homes/categories.html">Browse by Category</a>
+                        </li>
+                        <li>
+                            <span class="suggestion-icon">ℹ️</span>
+                            <a href="/homes/about.html">About This Site</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">📈</div>
+                        <h3 class="footer-title">Economics Notes</h3>
+                    </div>
+                    <p class="footer-description">
+                        Building a comprehensive collection of economics knowledge, one note at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="/homes/about.html">About</a></li>
+                        <li><a href="/homes/categories.html">Categories</a></li>
+                        <li><a href="/homes/all-notes.html">All Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-list">
+                        <li><a href="/homes/microeconomics.html">Microeconomics</a></li>
+                        <li><a href="/homes/macroeconomics.html">Macroeconomics</a></li>
+                        <li><a href="/homes/econometrics.html">Econometrics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Economics Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('mainNav')?.classList.toggle('active');
+        });
+
+        // Log 404 for debugging (optional)
+        console.log('404 Error - Attempted URL:', window.location.href);
+        
+        // Try to suggest correct page based on URL
+        const path = window.location.pathname;
+        if (path.includes('micro')) {
+            console.log('User might be looking for Microeconomics');
+        } else if (path.includes('macro')) {
+            console.log('User might be looking for Macroeconomics');
+        }
+    </script>
+</body>
+</html>
