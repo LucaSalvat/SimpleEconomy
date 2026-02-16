@@ -11,7 +11,100 @@ class ArticlePagination {
     async init() {
         await this.loadArticles();
         this.detectCurrentArticle();
+        this.renderArticleHeaderLayout();
+        this.renderArticleAuthor();
         this.renderPagination();
+    }
+
+
+    getResolvedAssetPath(pathFromRoot) {
+        if (!pathFromRoot) return '';
+        const depth = this.getDepthFromRoot();
+        return `${'../'.repeat(depth)}${pathFromRoot.replace(/^\/+/, '')}`;
+    }
+
+    getArticleHeroImagePath() {
+        if (!this.currentArticle) return '';
+
+        if (this.currentArticle.heroImage) {
+            return this.currentArticle.heroImage;
+        }
+
+        const categoryImageMap = {
+            microeconomics: 'config/logos/microeconomics.svg',
+            macroeconomics: 'config/logos/macroeconomics.svg',
+            econometrics: 'config/logos/econometrics.svg',
+            finance: 'config/logos/finance.svg',
+            development: 'config/logos/development.svg',
+        };
+
+        return categoryImageMap[this.currentArticle.categoryPath] || 'config/logos/statistic.svg';
+    }
+
+    renderArticleHeaderLayout() {
+        if (!this.currentArticle) return;
+
+        const articleCard = document.querySelector('.content-card');
+        if (!articleCard) return;
+
+        if (articleCard.querySelector('.article-header')) return;
+
+        const titleElement = articleCard.querySelector('.content-title');
+        if (!titleElement) return;
+
+        const dateMeta = articleCard.querySelector('.date-small');
+        const contentBody = articleCard.querySelector('.content-body');
+
+        const header = document.createElement('div');
+        header.className = 'article-header';
+
+        const headerMain = document.createElement('div');
+        headerMain.className = 'article-header-main';
+        headerMain.appendChild(titleElement);
+
+        if (dateMeta) {
+            headerMain.appendChild(dateMeta);
+        }
+
+        const media = document.createElement('div');
+        media.className = 'article-header-media';
+
+        const image = document.createElement('img');
+        image.className = 'article-header-image';
+        image.loading = 'lazy';
+        image.src = this.getResolvedAssetPath(this.getArticleHeroImagePath());
+        image.alt = `${this.currentArticle.title} image`;
+
+        media.appendChild(image);
+        header.appendChild(headerMain);
+        header.appendChild(media);
+
+        articleCard.insertBefore(header, contentBody || articleCard.firstChild);
+    }
+
+    // Render author name in article header
+    renderArticleAuthor() {
+        if (!this.currentArticle) return;
+
+        const articleCard = document.querySelector('.content-card');
+        if (!articleCard) return;
+
+        // Avoid duplicate injection if markup already includes the author.
+        if (articleCard.querySelector('.article-page-author')) return;
+
+        const authorName = (this.currentArticle.author || '').trim();
+        if (!authorName) return;
+        const dateMeta = articleCard.querySelector('.date-small');
+
+        const authorElement = document.createElement('p');
+        authorElement.className = 'article-author article-page-author';
+        authorElement.textContent = `By ${authorName}`;
+
+        if (dateMeta) {
+            dateMeta.insertAdjacentElement('afterend', authorElement);
+        } else {
+            articleCard.prepend(authorElement);
+        }
     }
 
     // Load articles from JSON
