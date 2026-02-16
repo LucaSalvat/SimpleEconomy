@@ -11,7 +11,7 @@
       "tags": ["supply", "demand", "equilibrium", "elasticity"],
       "featured": true,
       "readTime": "8 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "consumer-utility",
@@ -24,7 +24,7 @@
       "tags": ["utility", "consumer theory", "optimization"],
       "featured": false,
       "readTime": "10 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "gdp-measurement",
@@ -37,7 +37,7 @@
       "tags": ["GDP", "national accounts", "measurement"],
       "featured": false,
       "readTime": "12 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "monetary-policy",
@@ -50,7 +50,7 @@
       "tags": ["monetary policy", "central banking", "interest rates"],
       "featured": true,
       "readTime": "15 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "regression-basics",
@@ -63,7 +63,7 @@
       "tags": ["regression", "OLS", "statistics"],
       "featured": false,
       "readTime": "10 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "time-value-money",
@@ -76,7 +76,7 @@
       "tags": ["finance", "discounting", "present value"],
       "featured": false,
       "readTime": "7 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "poverty-measurement",
@@ -89,7 +89,7 @@
       "tags": ["poverty", "development", "measurement"],
       "featured": false,
       "readTime": "9 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     },
     {
       "id": "market-structures",
@@ -102,7 +102,7 @@
       "tags": ["market structures", "competition", "monopoly"],
       "featured": false,
       "readTime": "11 min read",
-      "author": "Economics Notes"
+      "author": "SimpleEconomy"
     }
   ],
   "categories": [

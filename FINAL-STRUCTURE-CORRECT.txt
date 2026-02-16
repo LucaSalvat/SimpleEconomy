@@ -68,7 +68,7 @@ ls -la | grep index.html
 
 You should see: index.html
 
-If it's still in economics-notes/, something went wrong!
+If it's still in simpleeconomy/, something went wrong!
 
 STEP 2: COMMIT & PUSH
 ─────────────────────
@@ -341,7 +341,7 @@ AFTER DEPLOYING:
 ================================================================================
 
 ✅ When you visit YOUR-USERNAME.github.io/YOUR-REPO/
-   → You see the Economics Notes homepage
+   → You see the SimpleEconomy homepage
 
 ✅ Click "Categories" 
    → Smooth fade to categories page
