@@ -1,0 +1,25 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+  <!-- Axes -->
+  <line x1="5" y1="19" x2="19" y2="19"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"/>
+
+  <line x1="5" y1="19" x2="5" y2="5"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"/>
+
+  <!-- Utility curve -->
+  <path d="M6.5 17
+           C 9 12,
+             13 9,
+             18 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"/>
+
+</svg>

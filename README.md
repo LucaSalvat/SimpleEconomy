@@ -33,36 +33,6 @@ This repository contains the source for a static economics learning website, inc
 └── 404.html                        # Not found page
 ```
 
-## Local development
-
-Although this is a static site, a dev server is recommended to avoid file:// fetch issues.
-
-### Option 1: Vite (recommended)
-
-```bash
-npm install
-npm run dev
-```
-
-Then open the local URL printed by Vite (typically `http://localhost:5173`).
-
-### Option 2: Python static server
-
-```bash
-python -m http.server 4173
-```
-
-Then open `http://localhost:4173`.
-
-## Build and preview
-
-```bash
-npm run build
-npm run preview
-```
-
-`build` outputs optimized static assets for deployment.
-
 ## Content workflow
 
 To add a new article:
