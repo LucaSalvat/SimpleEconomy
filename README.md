@@ -1,50 +1,100 @@
-# Economics Notes (GitHub Pages Ready)
+# Simple Economy — Static Educational Site
 
-This repository is now organized as a **clean static site** so it works directly on GitHub Pages.
+Simple Economy is a **content website**, not a software product/library.  
+It publishes accessible economics notes and articles as a static site built with HTML, CSS, and JavaScript.
 
-## Structure
+## What this repository is
 
-- `index.html` → homepage
-- `homes/` → category, all notes, and about pages
-- `articles/<category>/` → article pages
-- `data/articles.json` → single source of truth for article metadata
-- `js/` → shared scripts (homepage rendering, category pages, routing, pagination)
-- `config/styles.css` → global styles
-- `.nojekyll` → required for GitHub Pages static serving
+This repository contains the source for a static economics learning website, including:
+
+- A homepage and topic landing pages
+- Category pages for economics subject areas
+- Individual article pages
+- Shared styling and JavaScript for navigation, rendering, and pagination
+- Structured article metadata used across pages
+
+## Site structure
+
+```text
+.
+├── index.html                      # Homepage
+├── homes/                          # Main site pages (about, categories, topic homes)
+├── articles/                       # Article pages grouped by category
+│   ├── microeconomics/
+│   ├── macroeconomics/
+│   ├── development/
+│   ├── econometrics/
+│   └── finance/
+├── data/articles.json              # Canonical article metadata used by page scripts
+├── js/                             # Client-side logic (homepage, category pages, navigation, pagination)
+├── config/styles.css               # Global styles
+├── sitemap.xml                     # Search indexing support
+├── robots.txt                      # Crawl directives
+└── 404.html                        # Not found page
+```
 
 ## Local development
 
-You can open `index.html` directly, or run a local server:
+Although this is a static site, a dev server is recommended to avoid file:// fetch issues.
+
+### Option 1: Vite (recommended)
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local URL printed by Vite (typically `http://localhost:5173`).
+
+### Option 2: Python static server
 
 ```bash
 python -m http.server 4173
 ```
 
-Then visit `http://localhost:4173`.
+Then open `http://localhost:4173`.
 
-## GitHub Pages deployment
+## Build and preview
 
-1. Push the repository to GitHub.
-2. In **Settings → Pages**, set source to `Deploy from a branch`.
-3. Choose your default branch and root folder (`/`).
-4. Save.
+```bash
+npm run build
+npm run preview
+```
 
-Because this is static HTML/CSS/JS with `.nojekyll`, it renders directly.
+`build` outputs optimized static assets for deployment.
 
-## How to add a new article
+## Content workflow
 
-1. Create an HTML file under the correct category folder in `articles/`.
-2. Add/update an entry in `data/articles.json`:
-   - `id`, `title`, `category`, `categoryPath`, `path`, `date`, `description`, `tags`
-3. The homepage, category pages, and all-notes page will use that data.
+To add a new article:
 
+1. Create the article HTML file under the relevant folder in `articles/<category>/`.
+2. Add or update the article entry in `data/articles.json`.
+3. Verify homepage/category listing behavior locally.
+4. Update sitemap if required by your publishing workflow.
 
+Suggested metadata fields in `data/articles.json`:
 
-## Front-end architecture
+- `id`
+- `title`
+- `category`
+- `categoryPath`
+- `path`
+- `date`
+- `description`
+- `tags`
 
-- `js/homepage.js` → single homepage controller (loads data once, handles filtering, renders sections)
-- `js/category-page.js` → category page controller (core readings + latest articles + stats)
-- `js/navigation-manager.js` → shared navigation behavior and transitions
-- `js/article-pagination.js` → previous/next navigation on article pages
+## Deployment
 
-This keeps page responsibilities separated and avoids duplicated data-fetch/render code across multiple files.
+This site is designed for static hosting (for example GitHub Pages, Netlify, Cloudflare Pages, or similar platforms).
+
+For GitHub Pages, configure the repository to deploy from your chosen branch/folder containing the site output.
+
+## Tech notes
+
+- Static HTML/CSS/JavaScript architecture
+- Vite-powered local development/build tooling
+- Metadata-driven rendering via `data/articles.json`
+
+---
+
+If you are looking for an API package, backend service, or installable library, this is not that repository—this repo is the website itself.
