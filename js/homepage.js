@@ -121,6 +121,7 @@
           </div>
           <h3 class="featured-title">${featuredArticle.title}</h3>
           <p class="featured-description">${featuredArticle.description}</p>
+          <p class="article-author featured-author">✍️ ${featuredArticle.author || 'Economics Notes'}</p>
           <a href="${featuredArticle.path}" class="btn-primary">Read Full Note</a>
         </div>
       </article>
@@ -141,6 +142,7 @@
               </div>
               <h3 class="card-title">${article.title}</h3>
               <p class="card-description">${article.description || ''}</p>
+              <p class="article-author">✍️ ${article.author || 'Economics Notes'}</p>
               <div class="card-footer">
                 <a href="${article.path}" class="read-more">Read more →</a>
                 ${article.readTime ? `<span class="read-time">${article.readTime}</span>` : ''}
