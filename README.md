@@ -20,6 +20,7 @@ This repository contains the source for a static economics learning website, inc
 ├── index.html                      # Homepage
 ├── homes/                          # Main site pages (about, categories, topic homes)
 ├── articles/                       # Article pages grouped by category
+├── content/                        # Optional markdown sources rendered inside article pages
 │   ├── microeconomics/
 │   ├── macroeconomics/
 │   ├── development/
@@ -37,10 +38,15 @@ This repository contains the source for a static economics learning website, inc
 
 To add a new article:
 
-1. Create the article HTML file under the relevant folder in `articles/<category>/`.
-2. Add or update the article entry in `data/articles.json`.
-3. Verify homepage/category listing behavior locally.
-4. Update sitemap if required by your publishing workflow.
+1. Create the article HTML file under `articles/<category>/` (keep the existing `.content-card` and `.content-body` structure).
+2. (Recommended) Write the article in markdown under `content/<category>/<slug>.md`.
+3. Point the article container to markdown, for example: `<div class="content-body" data-markdown-src="../../content/<category>/<slug>.md"></div>`.
+4. Ensure the page loads `js/article-markdown-renderer.js` after `js/article-pagination.js`.
+5. Markdown supports images (`![alt](path)`), inline LaTeX (`$...$`), and display LaTeX blocks wrapped with `$$` lines.
+6. Article pages automatically render a right-aligned header image beside the title (category logo by default, or `heroImage` in `data/articles.json` if you want custom artwork).
+7. Add or update the article entry in `data/articles.json`.
+8. Verify homepage/category listing behavior locally.
+9. Update sitemap if required by your publishing workflow.
 
 Suggested metadata fields in `data/articles.json`:
 
@@ -52,6 +58,8 @@ Suggested metadata fields in `data/articles.json`:
 - `date`
 - `description`
 - `tags`
+- `author`
+- `heroImage` (optional, path from repo root for custom article header image)
 
 ## Deployment
 
