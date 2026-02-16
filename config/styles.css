@@ -42,13 +42,19 @@ body {
 }
 
 .logo-icon {
+    --logo-size: 2.5rem;
+    width: var(--logo-size);
+    height: var(--logo-size);
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    padding: 0.5rem;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
-    display: flex;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
 }
 
 .logo-text {
@@ -589,6 +595,19 @@ body {
     color: #6b7280;
 }
 
+.article-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.35rem;
+}
+
+.featured-author {
+    margin-top: 0.6rem;
+}
+
 /* No Results */
 .no-results {
     text-align: center;
@@ -616,7 +635,38 @@ body {
 }
 
 .category-card-icon {
-    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.category-icon-box {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #bfdbfe;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.12);
+}
+
+.category-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.category-logo-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .category-card-title {
@@ -749,6 +799,10 @@ body {
     padding: 1rem 1.5rem 1.5rem;
     color: #6b7280;
     font-size: 0.875rem;
+}
+
+.note-card-author {
+    padding: 0 1.5rem;
 }
 
 .note-card-category {
@@ -1735,13 +1789,6 @@ body {
     }
 }
 /* --- Visual polish updates --- */
-.logo-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
 
 .content-card {
     background: #ffffff;

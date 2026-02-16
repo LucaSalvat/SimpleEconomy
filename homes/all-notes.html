@@ -185,6 +185,7 @@
                             </span>
                         </div>
                         <p class="note-card-description">${article.description || 'Read more...'}</p>
+                        <p class="article-author note-card-author">✍️ ${article.author || 'Economics Notes'}</p>
                         <div class="note-card-footer">
                             <span class="note-card-date">📅 ${formatDate(article.date)}</span>
                             ${article.readTime ? `<span class="note-card-time">⏱️ ${article.readTime}</span>` : ''}

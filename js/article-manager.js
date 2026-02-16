@@ -49,6 +49,7 @@
           </div>
           <h3 class="card-title">${article.title}</h3>
           <p class="card-description">${article.description || ''}</p>
+          <p class="article-author">✍️ ${article.author || 'Economics Notes'}</p>
           <div class="card-footer">
             <a href="${article.path}" class="read-more">Read more →</a>
             ${article.readTime ? `<span class="read-time">${article.readTime}</span>` : ''}
