@@ -1944,3 +1944,57 @@ body {
         max-width: 280px;
     }
 }
+
+
+
+
+/* Section for premium style */
+
+/* Callouts */
+.content-body.markdown-body .callout{
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 14px 0;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.content-body.markdown-body .callout-title{
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.content-body.markdown-body .callout-note{ background: rgba(0,0,0,0.03); }
+.content-body.markdown-body .callout-warning{ background: rgba(0,0,0,0.04); }
+
+/* Figures & media */
+.content-body.markdown-body .article-figure img{
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+.content-body.markdown-body figcaption{
+  margin-top: 8px;
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+.content-body.markdown-body .article-video{
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+  margin: 14px 0;
+}
+.content-body.markdown-body .article-frame{
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+}
+
+/* Definition cards */
+.content-body.markdown-body .definition-card{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+.content-body.markdown-body .definition-term{
+  font-weight: 700;
+  margin-bottom: 6px;
+}
