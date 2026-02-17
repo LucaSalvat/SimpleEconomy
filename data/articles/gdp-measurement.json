@@ -1,0 +1,17 @@
+{
+  "id": "gdp-measurement",
+  "title": "GDP & National Income Accounting",
+  "category": "Macroeconomics",
+  "categoryPath": "macroeconomics",
+  "path": "articles/macroeconomics/gdp-measurement.html",
+  "date": "2026-02-12",
+  "description": "Comprehensive guide to measuring economic output through GDP, including expenditure and income approaches, and understanding real vs nominal values.",
+  "tags": [
+    "GDP",
+    "national accounts",
+    "measurement"
+  ],
+  "featured": false,
+  "readTime": "12 min read",
+  "author": "SimpleEconomy"
+}

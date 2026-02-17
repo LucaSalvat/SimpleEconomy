@@ -4,19 +4,52 @@
     loaded: false,
     articles: [],
     categories: [],
+    basePath: '',
   };
 
-  async function loadData() {
-    if (state.loaded) return state;
-
-    const response = await fetch('data/articles.json');
+  async function fetchJson(path) {
+    const response = await fetch(path);
     if (!response.ok) {
-      throw new Error(`Could not load articles.json (${response.status})`);
+      throw new Error(`Could not load ${path} (${response.status})`);
     }
+    return response.json();
+  }
 
-    const data = await response.json();
-    state.articles = (data.articles || []).slice();
-    state.categories = (data.categories || []).slice();
+  async function loadStructuredData(basePath = '') {
+    const normalizedBasePath = basePath ? `${basePath.replace(/\/$/, '')}/` : '';
+
+    try {
+      const [indexData, categoriesData] = await Promise.all([
+        fetchJson(`${normalizedBasePath}data/articles/index.json`),
+        fetchJson(`${normalizedBasePath}data/categories.json`),
+      ]);
+
+      const articleEntries = indexData.articles || [];
+      const articles = await Promise.all(
+        articleEntries.map((entry) => fetchJson(`${normalizedBasePath}data/articles/${entry.file || `${entry.id}.json`}`)),
+      );
+
+      return {
+        articles,
+        categories: categoriesData.categories || [],
+      };
+    } catch (structuredError) {
+      const fallback = await fetchJson(`${normalizedBasePath}data/articles.json`);
+      return {
+        articles: fallback.articles || [],
+        categories: fallback.categories || [],
+      };
+    }
+  }
+
+  async function loadData(basePath = '') {
+    const normalizedBasePath = basePath || '';
+    if (state.loaded && state.basePath === normalizedBasePath) return state;
+
+    const data = await loadStructuredData(normalizedBasePath);
+    state.articles = data.articles.slice();
+    state.categories = data.categories.slice();
+    state.basePath = normalizedBasePath;
     state.loaded = true;
     return state;
   }
@@ -61,6 +94,7 @@
 
   window.EconomicsData = {
     loadData,
+    loadStructuredData,
     sortByDateDesc,
     formatDate,
     createNoteCard,

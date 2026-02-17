@@ -8,7 +8,12 @@
       "path": "articles/microeconomics/supply-demand-basics.html",
       "date": "2026-02-10",
       "description": "Understanding market equilibrium through the interaction of supply and demand curves, including elasticity concepts and real-world applications.",
-      "tags": ["supply", "demand", "equilibrium", "elasticity"],
+      "tags": [
+        "supply",
+        "demand",
+        "equilibrium",
+        "elasticity"
+      ],
       "featured": true,
       "readTime": "8 min read",
       "author": "SimpleEconomy"
@@ -21,7 +26,11 @@
       "path": "articles/microeconomics/consumer-utility.html",
       "date": "2026-02-08",
       "description": "Exploring how consumers make choices under budget constraints to maximize utility using indifference curves and optimization techniques.",
-      "tags": ["utility", "consumer theory", "optimization"],
+      "tags": [
+        "utility",
+        "consumer theory",
+        "optimization"
+      ],
       "featured": false,
       "readTime": "10 min read",
       "author": "SimpleEconomy"
@@ -34,7 +43,11 @@
       "path": "articles/macroeconomics/gdp-measurement.html",
       "date": "2026-02-12",
       "description": "Comprehensive guide to measuring economic output through GDP, including expenditure and income approaches, and understanding real vs nominal values.",
-      "tags": ["GDP", "national accounts", "measurement"],
+      "tags": [
+        "GDP",
+        "national accounts",
+        "measurement"
+      ],
       "featured": false,
       "readTime": "12 min read",
       "author": "SimpleEconomy"
@@ -47,7 +60,11 @@
       "path": "articles/macroeconomics/monetary-policy.html",
       "date": "2026-02-05",
       "description": "How central banks use interest rates, reserve requirements, and open market operations to influence the economy and control inflation.",
-      "tags": ["monetary policy", "central banking", "interest rates"],
+      "tags": [
+        "monetary policy",
+        "central banking",
+        "interest rates"
+      ],
       "featured": true,
       "readTime": "15 min read",
       "author": "SimpleEconomy"
@@ -60,7 +77,11 @@
       "path": "articles/econometrics/regression-basics.html",
       "date": "2026-02-14",
       "description": "Introduction to OLS regression, including estimation, interpretation, and the classical assumptions underlying linear models.",
-      "tags": ["regression", "OLS", "statistics"],
+      "tags": [
+        "regression",
+        "OLS",
+        "statistics"
+      ],
       "featured": false,
       "readTime": "10 min read",
       "author": "SimpleEconomy"
@@ -73,7 +94,11 @@
       "path": "articles/finance/time-value-money.html",
       "date": "2026-02-11",
       "description": "Understanding present value, future value, and discounting cash flows for investment and financial decision-making.",
-      "tags": ["finance", "discounting", "present value"],
+      "tags": [
+        "finance",
+        "discounting",
+        "present value"
+      ],
       "featured": false,
       "readTime": "7 min read",
       "author": "SimpleEconomy"
@@ -86,7 +111,11 @@
       "path": "articles/development/poverty-measurement.html",
       "date": "2026-02-09",
       "description": "Analyzing different approaches to measuring poverty, from absolute poverty lines to multidimensional poverty indices.",
-      "tags": ["poverty", "development", "measurement"],
+      "tags": [
+        "poverty",
+        "development",
+        "measurement"
+      ],
       "featured": false,
       "readTime": "9 min read",
       "author": "SimpleEconomy"
@@ -99,7 +128,11 @@
       "path": "articles/microeconomics/market-structures.html",
       "date": "2026-02-06",
       "description": "Comparing perfect competition, monopoly, oligopoly, and monopolistic competition, with real-world examples and policy implications.",
-      "tags": ["market structures", "competition", "monopoly"],
+      "tags": [
+        "market structures",
+        "competition",
+        "monopoly"
+      ],
       "featured": false,
       "readTime": "11 min read",
       "author": "SimpleEconomy"

@@ -23,14 +23,47 @@
   }
 
   async function loadSiteData() {
-    const response = await fetch('data/articles.json');
-    if (!response.ok) {
-      throw new Error(`Unable to load site data (${response.status})`);
+    if (window.EconomicsData && window.EconomicsData.loadStructuredData) {
+      const data = await window.EconomicsData.loadStructuredData('');
+      state.articles = (data.articles || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+      state.categories = (data.categories || []).slice();
+      return;
     }
 
-    const data = await response.json();
-    state.articles = (data.articles || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date));
-    state.categories = (data.categories || []).slice();
+    try {
+      const [indexResponse, categoriesResponse] = await Promise.all([
+        fetch('data/articles/index.json'),
+        fetch('data/categories.json'),
+      ]);
+
+      if (!indexResponse.ok || !categoriesResponse.ok) {
+        throw new Error('Structured data unavailable');
+      }
+
+      const indexData = await indexResponse.json();
+      const categoriesData = await categoriesResponse.json();
+      const articleEntries = indexData.articles || [];
+      const articles = await Promise.all(
+        articleEntries.map((entry) =>
+          fetch(`data/articles/${entry.file || (entry.id + '.json')}`).then((response) => {
+            if (!response.ok) throw new Error(`Missing article file: ${entry.id}`);
+            return response.json();
+          }),
+        ),
+      );
+
+      state.articles = articles.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+      state.categories = (categoriesData.categories || []).slice();
+    } catch (structuredError) {
+      const response = await fetch('data/articles.json');
+      if (!response.ok) {
+        throw new Error(`Unable to load site data (${response.status})`);
+      }
+
+      const data = await response.json();
+      state.articles = (data.articles || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+      state.categories = (data.categories || []).slice();
+    }
   }
 
   function buildCategoryPills() {

@@ -68,15 +68,45 @@ async function loadArticles() {
   if (dataLoaded) return;
 
   try {
-    const response = await fetch('../data/articles.json');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    if (window.EconomicsData && window.EconomicsData.loadStructuredData) {
+      const data = await window.EconomicsData.loadStructuredData('..');
+      articlesData = data.articles || [];
+      dataLoaded = true;
+      return;
+    }
 
-    const data = await response.json();
-    articlesData = data.articles || [];
+    const [indexResponse, categoriesResponse] = await Promise.all([
+      fetch('../data/articles/index.json'),
+      fetch('../data/categories.json'),
+    ]);
+
+    if (!indexResponse.ok || !categoriesResponse.ok) {
+      throw new Error('Structured data unavailable');
+    }
+
+    const indexData = await indexResponse.json();
+    const entries = indexData.articles || [];
+    articlesData = await Promise.all(
+      entries.map((entry) =>
+        fetch(`../data/articles/${entry.file || (entry.id + '.json')}`).then((response) => {
+          if (!response.ok) throw new Error(`Missing article: ${entry.id}`);
+          return response.json();
+        }),
+      ),
+    );
+
     dataLoaded = true;
   } catch (error) {
-    console.error('Error loading articles:', error);
-    articlesData = [];
+    try {
+      const response = await fetch('../data/articles.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      articlesData = data.articles || [];
+      dataLoaded = true;
+    } catch (fallbackError) {
+      console.error('Error loading articles:', fallbackError);
+      articlesData = [];
+    }
   }
 }
 

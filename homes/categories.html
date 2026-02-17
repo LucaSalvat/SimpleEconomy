@@ -165,9 +165,31 @@
         // Load article counts and popular topics
         async function loadCategoryData() {
             try {
-                const response = await fetch('../data/articles.json');
-                const data = await response.json();
-                const articles = data.articles || [];
+                let articles = [];
+
+                try {
+                    const [indexResponse, categoriesResponse] = await Promise.all([
+                        fetch('../data/articles/index.json'),
+                        fetch('../data/categories.json')
+                    ]);
+
+                    if (!indexResponse.ok || !categoriesResponse.ok) {
+                        throw new Error('Structured data unavailable');
+                    }
+
+                    const indexData = await indexResponse.json();
+                    const entries = indexData.articles || [];
+                    articles = await Promise.all(entries.map(entry =>
+                        fetch(`../data/articles/${entry.file || (entry.id + '.json')}`).then(response => {
+                            if (!response.ok) throw new Error(`Missing article: ${entry.id}`);
+                            return response.json();
+                        })
+                    ));
+                } catch (structuredError) {
+                    const response = await fetch('../data/articles.json');
+                    const data = await response.json();
+                    articles = data.articles || [];
+                }
 
                 // Count articles per category
                 const counts = {
