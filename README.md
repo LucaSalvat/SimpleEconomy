@@ -26,7 +26,9 @@ This repository contains the source for a static economics learning website, inc
 │   ├── development/
 │   ├── econometrics/
 │   └── finance/
-├── data/articles.json              # Canonical article metadata used by page scripts
+├── data/articles/                  # Per-article metadata files + index for scalable editing
+├── data/categories.json            # Category metadata
+├── data/articles.json              # Backward-compatible aggregated metadata (generated)
 ├── js/                             # Client-side logic (homepage, category pages, navigation, pagination)
 ├── config/styles.css               # Global styles
 ├── sitemap.xml                     # Search indexing support
@@ -43,12 +45,12 @@ To add a new article:
 3. Point the article container to markdown, for example: `<div class="content-body" data-markdown-src="../../content/<category>/<slug>.md"></div>`.
 4. Ensure the page loads `js/article-markdown-renderer.js` after `js/article-pagination.js`.
 5. Markdown supports images (`![alt](path)`), inline LaTeX (`$...$`), and display LaTeX blocks wrapped with `$$` lines.
-6. Article pages automatically render a right-aligned header image beside the title (category logo by default, or `heroImage` in `data/articles.json` if you want custom artwork).
-7. Add or update the article entry in `data/articles.json`.
+6. Article pages automatically render a right-aligned header image beside the title (category logo by default, or `heroImage` in that article's JSON file if you want custom artwork).
+7. Add/update one file at `data/articles/<article-id>.json` and reference it from `data/articles/index.json`.
 8. Verify homepage/category listing behavior locally.
 9. Update sitemap if required by your publishing workflow.
 
-Suggested metadata fields in `data/articles.json`:
+Suggested metadata fields in each `data/articles/<article-id>.json`:
 
 - `id`
 - `title`
@@ -71,7 +73,8 @@ For GitHub Pages, configure the repository to deploy from your chosen branch/fol
 
 - Static HTML/CSS/JavaScript architecture
 - Vite-powered local development/build tooling
-- Metadata-driven rendering via `data/articles.json`
+- Metadata-driven rendering via `data/articles/index.json` + per-article JSON files
+- Compatibility fallback supported via generated `data/articles.json` (`npm run sync:data`)
 
 ---
 

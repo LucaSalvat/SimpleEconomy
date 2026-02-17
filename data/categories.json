@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "name": "Microeconomics",
+      "slug": "microeconomics",
+      "path": "microeconomics",
+      "icon": "\ud83d\udd2c",
+      "count": 4,
+      "description": "Study of individual agents, firms, and markets",
+      "color": "blue"
+    },
+    {
+      "name": "Macroeconomics",
+      "slug": "macroeconomics",
+      "path": "macroeconomics",
+      "icon": "\ud83c\udf0d",
+      "count": 2,
+      "description": "Analysis of aggregate economic phenomena",
+      "color": "purple"
+    },
+    {
+      "name": "Econometrics",
+      "slug": "econometrics",
+      "path": "econometrics",
+      "icon": "\ud83d\udcc8",
+      "count": 1,
+      "description": "Statistical methods in economic analysis",
+      "color": "green"
+    },
+    {
+      "name": "Finance",
+      "slug": "finance",
+      "path": "finance",
+      "icon": "\ud83d\udcbc",
+      "count": 1,
+      "description": "Financial markets, instruments, and valuation",
+      "color": "indigo"
+    },
+    {
+      "name": "Development Economics",
+      "slug": "development",
+      "path": "development",
+      "icon": "\ud83c\udf31",
+      "count": 1,
+      "description": "Economic growth and development challenges",
+      "color": "teal"
+    }
+  ]
+}

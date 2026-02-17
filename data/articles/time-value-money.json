@@ -1,0 +1,17 @@
+{
+  "id": "time-value-money",
+  "title": "Time Value of Money Principles",
+  "category": "Finance",
+  "categoryPath": "finance",
+  "path": "articles/finance/time-value-money.html",
+  "date": "2026-02-11",
+  "description": "Understanding present value, future value, and discounting cash flows for investment and financial decision-making.",
+  "tags": [
+    "finance",
+    "discounting",
+    "present value"
+  ],
+  "featured": false,
+  "readTime": "7 min read",
+  "author": "SimpleEconomy"
+}

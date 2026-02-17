@@ -1,0 +1,17 @@
+{
+  "id": "regression-basics",
+  "title": "Simple Linear Regression Fundamentals",
+  "category": "Econometrics",
+  "categoryPath": "econometrics",
+  "path": "articles/econometrics/regression-basics.html",
+  "date": "2026-02-14",
+  "description": "Introduction to OLS regression, including estimation, interpretation, and the classical assumptions underlying linear models.",
+  "tags": [
+    "regression",
+    "OLS",
+    "statistics"
+  ],
+  "featured": false,
+  "readTime": "10 min read",
+  "author": "SimpleEconomy"
+}

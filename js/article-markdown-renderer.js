@@ -59,6 +59,64 @@
     return window.__mathJaxLoadingPromise;
   }
 
+  function normalizeStandaloneMedia(container) {
+    container.querySelectorAll('p').forEach((paragraph) => {
+      if (paragraph.children.length !== 1) return;
+
+      const child = paragraph.children[0];
+      if (!child || child.tagName !== 'IMG') return;
+
+      const figure = document.createElement('figure');
+      figure.className = 'markdown-media';
+      figure.appendChild(child);
+
+      const captionText = child.getAttribute('title') || child.getAttribute('alt');
+      if (captionText) {
+        const figcaption = document.createElement('figcaption');
+        figcaption.textContent = captionText;
+        figure.appendChild(figcaption);
+      }
+
+      paragraph.replaceWith(figure);
+    });
+  }
+
+  function transformCalloutBlocks(container) {
+    container.querySelectorAll('blockquote').forEach((quote) => {
+      const firstParagraph = quote.querySelector('p');
+      if (!firstParagraph) return;
+
+      const rawText = firstParagraph.textContent.trim();
+      const match = rawText.match(/^(definition|example)\s*[:\-]\s*/i);
+      if (!match) return;
+
+      const kind = match[1].toLowerCase();
+      firstParagraph.textContent = rawText.replace(/^(definition|example)\s*[:\-]\s*/i, '').trim();
+
+      const callout = document.createElement('div');
+      callout.className = `markdown-callout markdown-callout--${kind}`;
+
+      const title = document.createElement('div');
+      title.className = 'markdown-callout-title';
+      title.textContent = kind === 'definition' ? 'Definition' : 'Example';
+
+      const body = document.createElement('div');
+      body.className = 'markdown-callout-body';
+      while (quote.firstChild) {
+        body.appendChild(quote.firstChild);
+      }
+
+      callout.appendChild(title);
+      callout.appendChild(body);
+      quote.replaceWith(callout);
+    });
+  }
+
+  function enhanceMarkdownContent(container) {
+    normalizeStandaloneMedia(container);
+    transformCalloutBlocks(container);
+  }
+
   async function renderMarkdownArticle() {
     const container = document.querySelector('.content-body[data-markdown-src]');
     if (!container) return;
@@ -85,6 +143,7 @@
 
       const renderedHtml = md.render(markdown);
       container.innerHTML = stripScriptTags(renderedHtml);
+      enhanceMarkdownContent(container);
 
       if (/\$/.test(markdown)) {
         try {

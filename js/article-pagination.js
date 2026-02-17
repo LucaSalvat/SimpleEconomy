@@ -110,19 +110,49 @@ class ArticlePagination {
     // Load articles from JSON
     async loadArticles() {
         try {
-            // Determine correct path to data file
             const depth = this.getDepthFromRoot();
-            const dataPath = '../'.repeat(depth) + 'data/articles.json';
-            
-            const response = await fetch(dataPath);
-            const data = await response.json();
-            this.articles = data.articles || [];
-            
-            // Sort by date (newest first)
+            const basePath = '../'.repeat(depth).replace(/\/$/, '');
+
+            let articles = [];
+
+            if (window.EconomicsData && window.EconomicsData.loadStructuredData) {
+                const data = await window.EconomicsData.loadStructuredData(basePath);
+                articles = data.articles || [];
+            } else {
+                const prefix = '../'.repeat(depth);
+                const [indexResponse, categoriesResponse] = await Promise.all([
+                    fetch(prefix + 'data/articles/index.json'),
+                    fetch(prefix + 'data/categories.json'),
+                ]);
+
+                if (!indexResponse.ok || !categoriesResponse.ok) {
+                    throw new Error('Structured data unavailable');
+                }
+
+                const indexData = await indexResponse.json();
+                const entries = indexData.articles || [];
+                articles = await Promise.all(entries.map((entry) =>
+                    fetch(prefix + 'data/articles/' + (entry.file || (entry.id + '.json'))).then((response) => {
+                        if (!response.ok) throw new Error(`Missing article: ${entry.id}`);
+                        return response.json();
+                    })
+                ));
+            }
+
+            this.articles = articles;
             this.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
         } catch (error) {
-            console.error('Error loading articles for pagination:', error);
-            this.articles = [];
+            try {
+                const depth = this.getDepthFromRoot();
+                const dataPath = '../'.repeat(depth) + 'data/articles.json';
+                const response = await fetch(dataPath);
+                const data = await response.json();
+                this.articles = data.articles || [];
+                this.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } catch (fallbackError) {
+                console.error('Error loading articles for pagination:', fallbackError);
+                this.articles = [];
+            }
         }
     }
 

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "articles": [
+    {
+      "id": "supply-demand-basics",
+      "file": "supply-demand-basics.json"
+    },
+    {
+      "id": "consumer-utility",
+      "file": "consumer-utility.json"
+    },
+    {
+      "id": "gdp-measurement",
+      "file": "gdp-measurement.json"
+    },
+    {
+      "id": "monetary-policy",
+      "file": "monetary-policy.json"
+    },
+    {
+      "id": "regression-basics",
+      "file": "regression-basics.json"
+    },
+    {
+      "id": "time-value-money",
+      "file": "time-value-money.json"
+    },
+    {
+      "id": "poverty-measurement",
+      "file": "poverty-measurement.json"
+    },
+    {
+      "id": "market-structures",
+      "file": "market-structures.json"
+    }
+  ]
+}
